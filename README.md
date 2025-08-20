@@ -1,27 +1,81 @@
-## **ROUTE OPTIMIZATION PROJECT FOR CONTAINERIZED FREIGHT IN RIVERS STATE**
-This project has its roots in **Shortest Path Problems** and aims to determine the least-cost path in travelling from an origin say ***A*** to any destination ***Z*** for trucks carrying containers, while passing through ***K***-number of intermediate nodes. Its scope is Rivers State, Nigeria, and will feature:
+# Emergency Routing Project
 
-#### **1. A GRAPH:**
-A graph of the entire Rivers State road networks as are relevant to movement of container-carrying trucks.
-#### **2. NODES:**
-The graph will also have layered on, stop points relevant to typical truck travel behaviour as nodes. Some of which include Port Harcourt Port, Onne Port, Bonded Warehouses, Maintenance and truck service points, and Petrol stations for refuelling.
-#### **3. WEIGHTS:**
-The variables to be optimized for are time, distance, fuel consumption and congestion. The Shortest Path computation will use a dual-mode cost function;
-  - **Single-Cost Mode**: In this mode the user can optimize for any specific variable.
-  - **Weighted-Cost Mode**: In this mode the user can optimize for the combination of all factors which utilizes costs as is useful in real life decision making and route planning.
+## Overview
+The **Emergency Routing Project** focuses on optimizing medical emergency response in **Obio-Akpor, Rivers State**.  
+The goal is to identify the **closest hospital** for any emergency, taking into account:
+- Distance  
+- Travel time  
+- Hospital capacity  
+- Service rating  
 
-    By integrating geospatial data, a multi-variable cost function and routing algorithms this projects provide a reliable framework, helping logistics managers, fleet managers and transport policy makers minimize costs and support efficient route planning.
-    ___
-    #### KEY FEATURES
-    
-- **GIS integration-** uses geospatial data to model real-world logistics networks.
+---
 
-- **Node-based modeling–** represents ports, terminals, depots, and warehouses as nodes.
+## Tools and Libraries
+- **Python**: main programming environment  
+- **Pandas / NumPy**: data handling and computation  
+- **GeoPandas / Shapely / Fiona**: geospatial manipulation  
+- **OSMNx / NetworkX**: road networks, graph modeling, shortest paths  
+- **SciPy**: optimization routines 
+- **Kepler.gl / Matplotlib / Plotly**: geospatial visualization  
+- **Google Colab**: coding & collaboration  
+- **Git / GitHub**: version control  
 
-- **Dynamic routing–** optimizes routes based on multiple factors (distance, cost, time, congestion).
+---
 
-- **Google Maps API and OSM data–** for accurate geolocation, mapping, and boundary data.
+## Data Notes
+- **Hospitals dataset** manually collected into CSV: Name, coordinates, service rating.  
+  - Reason: OpenStreetMaps does not have a lot of hospitals plotted onto its maps.  
+- **Road network** extracted via OSMNx for Obio-Akpor polygon.  
+- Data integrity maintained: no missing values, clean and ready for modeling.  
 
-- **Data-driven and reliable insights–** generates route efficiency reports for logistics planning.
+---
 
-- **Scalable framework–** can be extended to other regions or logistics networks.
+## Project Phases
+
+### Phase 1  Completed
+- Extract Obio-Akpor boundaries.  
+- Load hospital CSV and road network.  
+- Convert road network to GeoDataFrame.  
+- Prepare graph base for routing.  
+- Integrate hospitals with the road network graph.  
+- Hospitals plotted on map with lon/lat.  
+
+### Phase 2  In Progress
+- Emergency Route Optimization.  
+- Compute one-to-many shortest paths using **Dijkstra’s algorithm**.  
+- Compute route metrics: distance, travel time (road-type speeds), hospital capacity, service rating.  
+- Visualization: highlight closest hospital, color-code alternatives.  
+
+### Phase 3  Planned
+- Simulation of emergency scenarios.  
+- Interactive dashboards (Tableau).  
+- Documentation and reporting of results.  
+
+---
+
+## Special Considerations
+- Travel time calculated using average speeds by road type:  
+  - Highway → 80 km/h  
+  - Primary → 60 km/h  
+  - Minor → 40 km/h  
+- Multi-criteria cost function considers **distance, travel time, hospital capacity, and rating**.  
+- Workflow maintained in **Google Colab**.  
+- GitHub used for version snapshots (token-based authentication).  
+
+---
+
+## Collaboration & Version Control
+- Shared Google Drive folder for Colab notebooks & resources.  
+- **Folder structure**:  
+/Project Code, Resources and Implementation/
+  - Route_Optimization_Project.ipynb (primary code-space)
+  - Resources, containing (hospital CSV and other static data)
+  - Scripts, containing python files
+- GitHub repository used for storing snapshots, while live coding collaboration happens in Colab.  
+
+---
+
+## Current Status
+-  Phase 1 complete: hospitals integrated.  
+-  Starting Phase 2: route optimization using Dijkstra’s algorithm.  
+
